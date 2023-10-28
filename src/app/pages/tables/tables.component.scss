@@ -1,0 +1,28 @@
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    padding: 10px;
+    color: white;
+  }
+  
+  .table-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .refresh-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .refresh-button:hover {
+    background-color: #218838;
+  }
+  

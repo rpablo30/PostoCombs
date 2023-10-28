@@ -1,33 +1,40 @@
 {
-    "abastecimentos": [
-      {
-        "id": 1,
-        "bomba": "Bomba 1",
-        "combustivel": "Gasolina",
-        "quantidadeLitros": 50,
-        "valorAbastecido": 150.0
-      },
-      {
-        "id": 2,
-        "bomba": "Bomba 2",
-        "combustivel": "Diesel",
-        "quantidadeLitros": 40,
-        "valorAbastecido": 100.0
-      },
-      {
-        "id": 3,
-        "bomba": "Bomba 1",
-        "combustivel": "Etanol",
-        "quantidadeLitros": 30,
-        "valorAbastecido": 90.0
-      },
-      {
-        "id": 4,
-        "bomba": "Bomba 2",
-        "combustivel": "Gasolina",
-        "quantidadeLitros": 45,
-        "valorAbastecido": 135.0
-      }
-    ]
-  }
-  
+  "abastecimentos": [
+    {
+      "id": 1,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 50,
+      "valorAbastecido": 150
+    },
+    {
+      "id": 2,
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 40,
+      "valorAbastecido": 100
+    },
+    {
+      "id": 3,
+      "bomba": "Bomba 1",
+      "combustivel": "Etanol",
+      "quantidadeLitros": 30,
+      "valorAbastecido": 90
+    },
+    {
+      "id": 4,
+      "bomba": "Bomba 2",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 45,
+      "valorAbastecido": 135
+    },
+    {
+      "data": "2023-10-28",
+      "valorAbastecido": "R$ 333,00",
+      "quantidadeLitros": 58.01393728222996,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "id": 5
+    }
+  ]
+}

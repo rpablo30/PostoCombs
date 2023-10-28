@@ -1,4 +1,9 @@
-<table mat-table class="mat-elevation-z8">
+<div class="table-header">
+  <h2>Tabela de Abastecimentos</h2>
+  <button class="refresh-button">Atualizar</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.position}} </td>

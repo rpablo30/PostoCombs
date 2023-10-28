@@ -23,7 +23,6 @@ import { AbastecimentoModalComponent } from 'src/app/modal/abastecimentoModal/ab
   declarations: [
     AbastecimentoRegistroComponent,
     AbastecimentoModalComponent,
-    TablesComponent,
   ]
 })
 

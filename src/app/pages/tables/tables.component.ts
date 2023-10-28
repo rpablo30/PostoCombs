@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Abastecimento } from 'src/app/model/Abastecimeto.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { AbastecimentoService } from 'src/app/services/abastecimento.service';
 
@@ -11,22 +12,16 @@ import { AbastecimentoService } from 'src/app/services/abastecimento.service';
 })
 export class TablesComponent implements OnInit {
   displayedColumns: string[] = ['position', 'bomba', 'combustivel', 'quantidadeLitros', 'valorAbastecido'];
-  dataSource: Abastecimento[] = [];
+  dataSource: MatTableDataSource<Abastecimento>;
 
   constructor(
     private abastecimentoService: AbastecimentoService,
-    private abastecimentoLocalService: AbastecimentoService // Importe o serviço local se necessário
+    private abastecimentoLocalService: AbastecimentoService
   ) {}
 
   ngOnInit() {
-    // Use this line to load data from a remote API
-    this.abastecimentoService.getAbastecimentos().subscribe((data) => {
-      this.dataSource = data;
+    this.abastecimentoService.getAbastecimentos().subscribe(abastecimentos => {
+      this.dataSource = new MatTableDataSource<Abastecimento>(abastecimentos);
     });
-
-    // Use this line if you want to load data from the local file (db.json)
-    // this.abastecimentoLocalService.getAbastecimentos().subscribe((data) => {
-    //   this.dataSource = data.abastecimentos;
-    // });
   }
 }
