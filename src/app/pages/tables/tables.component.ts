@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { AbastecimentoService } from 'src/app/services/abastecimento.service';
 import { Abastecimento } from 'src/app/model/Abastecimeto.model';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-tables',
@@ -18,7 +19,8 @@ export class TablesComponent implements OnInit {
   selectedBomba: string = 'all';
   selectedCombustivel: string = 'all';
   showBombaSelect: boolean = false;
-  picker: any;
+  @ViewChild('picker') picker: MatDatepicker<Date>;
+
 
   constructor(
     private abastecimentoService: AbastecimentoService
