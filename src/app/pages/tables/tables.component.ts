@@ -18,6 +18,7 @@ export class TablesComponent implements OnInit {
   selectedBomba: string = 'all';
   selectedCombustivel: string = 'all';
   showBombaSelect: boolean = false;
+  picker: any;
 
   constructor(
     private abastecimentoService: AbastecimentoService
@@ -30,6 +31,10 @@ export class TablesComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Abastecimento>(this.abastecimentos);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  openDatePicker() {
+    this.picker.open(); // Abre o calendário quando o ícone é clicado
   }
 
   applyFilters() {

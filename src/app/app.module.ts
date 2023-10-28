@@ -9,7 +9,10 @@ import { MatTableModule } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common'; // Importe o CommonModule
+import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 
 import { AppComponent } from './app.component';
@@ -40,7 +43,10 @@ import { TablesComponent } from './pages/tables/tables.component';
     MatPaginatorModule,
     MatFormFieldModule,
     MatSelectModule,
-    CommonModule    
+    CommonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule  
   ],
   declarations: [
     AppComponent,

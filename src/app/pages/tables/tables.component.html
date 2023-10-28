@@ -6,24 +6,24 @@
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="quantidadeLitros">
       <th mat-header-cell *matHeaderCellDef> Quantidade Litros </th>
-      <td mat-cell *matCellDef="let element"> {{element.quantidadeLitros | number: '1.2-2'}} Litros </td>
+      <td mat-cell *matCellDef="let element">{{ element.quantidadeLitros | number: '1.2-2' }} Litros</td>
     </ng-container>
 
     <ng-container matColumnDef="valorAbastecido">
       <th mat-header-cell *matHeaderCellDef> Valor Abastecido </th>
-      <td mat-cell *matCellDef="let element"> R$ {{ element.valorAbastecido }} </td>
+      <td mat-cell *matCellDef="let element"> R$ {{ element.valorAbastecido }}</td>
     </ng-container>
 
     <ng-container matColumnDef="bomba">
       <th mat-header-cell *matHeaderCellDef>
         <mat-form-field appearance="fill">
           <mat-select [(ngModel)]="selectedBomba" (selectionChange)="applyFilters()">
-            <mat-option value="all">Totas as bombas</mat-option>
+            <mat-option value="all">Todas as bombas</mat-option>
             <mat-option value="Bomba 1">Bomba 1</mat-option>
             <mat-option value="Bomba 2">Bomba 2</mat-option>
             <mat-option value="Bomba 3">Bomba 3</mat-option>
@@ -32,7 +32,7 @@
         </mat-form-field>
       </th>
       <td mat-cell *matCellDef="let element">{{ element.bomba }}</td>
-    </ng-container>    
+    </ng-container>
 
     <ng-container matColumnDef="combustivel">
       <th mat-header-cell *matHeaderCellDef>
@@ -48,9 +48,19 @@
     </ng-container>
 
     <ng-container matColumnDef="data">
-      <th mat-header-cell *matHeaderCellDef> Data de Abastecimento </th>
-      <td mat-cell *matCellDef="let element"> {{ element.data | date: 'dd/MM/yyyy' }} </td>
+      <th mat-header-cell *matHeaderCellDef (click)="openDatePicker()">
+        Data de Abastecimento
+        <mat-icon class="calendar-icon">calendar_today</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="element.data">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </td>
     </ng-container>
+    
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
