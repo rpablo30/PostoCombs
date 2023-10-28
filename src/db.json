@@ -1,0 +1,33 @@
+{
+    "abastecimentos": [
+      {
+        "id": 1,
+        "bomba": "Bomba 1",
+        "combustivel": "Gasolina",
+        "quantidadeLitros": 50,
+        "valorAbastecido": 150.0
+      },
+      {
+        "id": 2,
+        "bomba": "Bomba 2",
+        "combustivel": "Diesel",
+        "quantidadeLitros": 40,
+        "valorAbastecido": 100.0
+      },
+      {
+        "id": 3,
+        "bomba": "Bomba 1",
+        "combustivel": "Etanol",
+        "quantidadeLitros": 30,
+        "valorAbastecido": 90.0
+      },
+      {
+        "id": 4,
+        "bomba": "Bomba 2",
+        "combustivel": "Gasolina",
+        "quantidadeLitros": 45,
+        "valorAbastecido": 135.0
+      }
+    ]
+  }
+  
