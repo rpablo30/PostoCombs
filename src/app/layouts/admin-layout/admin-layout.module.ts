@@ -6,13 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
-import { MapsComponent } from '../../pages/maps/maps.component';
-import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
+import { AbastecimentoRegistroComponent } from '../../pages/abastecimento/abastecimentoRegistro.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { ToastrModule } from 'ngx-toastr';
+import { AbastecimentoModalComponent } from 'src/app/modal/abastecimentoModal/abastecimentoModal.component';
 
 @NgModule({
   imports: [
@@ -24,11 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ClipboardModule
   ],
   declarations: [
-    DashboardComponent,
-    UserProfileComponent,
+    AbastecimentoRegistroComponent,
+    AbastecimentoModalComponent,
     TablesComponent,
-    IconsComponent,
-    MapsComponent
   ]
 })
 

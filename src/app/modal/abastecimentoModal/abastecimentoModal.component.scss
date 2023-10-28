@@ -1,0 +1,87 @@
+.divider-line {
+  display: block;
+  border-top: 1px solid #000;
+  width: 100%; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+
+.modal-container {
+  position: fixed;
+  top: 70%;
+  left: 19%;
+  transform: translate(0, -50%);
+  z-index: 1500;
+  background-color: rgb(196, 222, 230);
+  width: 40%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group label[for="dataAbastecimento"] {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  max-width: 30%;
+}
+
+.form-group label[for="quantidadeLitros"],
+.form-group label[for="valorAbastecido"] {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  max-width: 30%;
+}
+
+.form-group input[type="date"] {
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 1px solid #000;
+  padding-left: 10px;
+  text-align: left;
+  max-width: 30%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+  text-align: left;
+  max-width: 50%;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+
+.input-group-addon {
+  width: auto;
+  padding-left: 0;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-right: 30px; 
+  border-radius: 4px 0 0 4px; 
+  color: #495057;
+  text-align: right;
+  line-height: 34px; 
+}
+
+.mat-input-element {
+  border-left: none; 
+  border-radius: 0 4px 4px 0; 
+}
+
+
+.input-currency {
+  margin-left: 200px;
+}
