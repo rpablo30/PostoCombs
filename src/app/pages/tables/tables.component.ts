@@ -57,4 +57,23 @@ export class TablesComponent implements OnInit {
       });
     }
   }
+  imprimirRelatorio() {
+    const relatorio = this.abastecimentos.reduce((agrupado, abastecimento) => {
+      const chave = `${abastecimento.data} - ${abastecimento.bomba} - ${abastecimento.combustivel}`;
+      if (!agrupado[chave]) {
+        agrupado[chave] = {
+          dia: abastecimento.data,
+          tanque: abastecimento.bomba,
+          bomba: abastecimento.bomba,
+          combustivel: abastecimento.combustivel,
+          valorTotal: 0
+        };
+      }
+      agrupado[chave].valorTotal += parseFloat(abastecimento.valorAbastecido);
+      return agrupado;
+    }, {});
+
+    const relatorioArray = Object.values(relatorio);
+    console.log(relatorioArray);
+  }
 }

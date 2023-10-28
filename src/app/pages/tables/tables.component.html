@@ -1,7 +1,7 @@
 <div class="table-container">
   <div class="table-header">
     <h2>Tabela de Abastecimentos</h2>
-    <button class="refresh-button">Atualizar</button>
+    <button class="imprimir-button" (click)="imprimirRelatorio()">Imprimir Relatório</button>
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
