@@ -35,8 +35,16 @@
     </ng-container>    
 
     <ng-container matColumnDef="combustivel">
-      <th mat-header-cell *matHeaderCellDef> Tanque </th>
-      <td mat-cell *matCellDef="let element"> {{element.combustivel}} </td>
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="fill">
+          <mat-select [(ngModel)]="selectedCombustivel" (selectionChange)="applyFilters()">
+            <mat-option value="all">Gasolina/Diesel</mat-option>
+            <mat-option value="Gasolina">Gasolina</mat-option>
+            <mat-option value="Diesel">Diesel</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.combustivel }}</td>
     </ng-container>
 
     <ng-container matColumnDef="data">
