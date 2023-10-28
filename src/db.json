@@ -4,37 +4,161 @@
       "id": 1,
       "bomba": "Bomba 1",
       "combustivel": "Gasolina",
-      "quantidadeLitros": 50,
-      "valorAbastecido": 150
+      "quantidadeLitros": 58.01,
+      "valorAbastecido": "333.00",
+      "data": "2023-10-05"
     },
     {
       "id": 2,
-      "bomba": "Bomba 2",
-      "combustivel": "Diesel",
-      "quantidadeLitros": 40,
-      "valorAbastecido": 100
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 10.27,
+      "valorAbastecido": "59.00",
+      "data": "2023-10-10"
     },
     {
       "id": 3,
-      "bomba": "Bomba 1",
-      "combustivel": "Etanol",
-      "quantidadeLitros": 30,
-      "valorAbastecido": 90
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 49.18,
+      "valorAbastecido": "300.00",
+      "data": "2023-10-15"
     },
     {
       "id": 4,
       "bomba": "Bomba 2",
-      "combustivel": "Gasolina",
-      "quantidadeLitros": 45,
-      "valorAbastecido": 135
+      "combustivel": "Diesel",
+      "quantidadeLitros": 1620.98,
+      "valorAbastecido": "9888.00",
+      "data": "2023-10-20"
     },
     {
-      "data": "2023-10-28",
-      "valorAbastecido": "R$ 333,00",
-      "quantidadeLitros": 58.01393728222996,
+      "id": 5,
+      "bomba": "Bomba 3",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-10-25"
+    },
+    {
+      "id": 6,
+      "bomba": "Bomba 3",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 5805.05,
+      "valorAbastecido": "33321.00",
+      "data": "2023-10-30"
+    },
+    {
+      "id": 7,
       "bomba": "Bomba 1",
       "combustivel": "Gasolina",
-      "id": 5
+      "quantidadeLitros": 564.81,
+      "valorAbastecido": "3242.00",
+      "data": "2023-11-05"
+    },
+    {
+      "id": 8,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 75.26,
+      "valorAbastecido": "432.00",
+      "data": "2023-11-10"
+    },
+    {
+      "id": 9,
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-11-15"
+    },
+    {
+      "id": 10,
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-11-20"
+    },
+    {
+      "id": 11,
+      "bomba": "Bomba 3",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-11-25"
+    },
+    {
+      "id": 12,
+      "bomba": "Bomba 3",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 5805.05,
+      "valorAbastecido": "33321.00",
+      "data": "2023-11-30"
+    },
+    {
+      "id": 13,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 564.81,
+      "valorAbastecido": "3242.00",
+      "data": "2023-12-05"
+    },
+    {
+      "id": 14,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 75.26,
+      "valorAbastecido": "432.00",
+      "data": "2023-12-10"
+    },
+    {
+      "id": 15,
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-12-15"
+    },
+    {
+      "id": 16,
+      "bomba": "Bomba 2",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-12-20"
+    },
+    {
+      "id": 17,
+      "bomba": "Bomba 3",
+      "combustivel": "Diesel",
+      "quantidadeLitros": 52.62,
+      "valorAbastecido": "321.00",
+      "data": "2023-12-25"
+    },
+    {
+      "id": 18,
+      "bomba": "Bomba 3",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 5805.05,
+      "valorAbastecido": "33321.00",
+      "data": "2023-12-30"
+    },
+    {
+      "id": 19,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 564.81,
+      "valorAbastecido": "3242.00",
+      "data": "2024-01-05"
+    },
+    {
+      "id": 20,
+      "bomba": "Bomba 1",
+      "combustivel": "Gasolina",
+      "quantidadeLitros": 75.26,
+      "valorAbastecido": "432.00",
+      "data": "2024-01-10"
     }
   ]
 }

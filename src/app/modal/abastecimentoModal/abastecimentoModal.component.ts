@@ -63,9 +63,9 @@ export class AbastecimentoModalComponent {
     
     if (!isNaN(valorAbastecido) && valorAbastecido > 0) {
       if (this.tipoCombustivel === 'Gasolina') {
-        this.novoAbastecimento.quantidadeLitros = valorAbastecido / this.precoGasolina;
+        this.novoAbastecimento.quantidadeLitros = (valorAbastecido / this.precoGasolina).toFixed(2);
       } else if (this.tipoCombustivel === 'Diesel') {
-        this.novoAbastecimento.quantidadeLitros = valorAbastecido / this.precoDiesel;
+        this.novoAbastecimento.quantidadeLitros = (valorAbastecido / this.precoDiesel).toFixed(2);
       }
     } else {
       this.novoAbastecimento.quantidadeLitros = null;

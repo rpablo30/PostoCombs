@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Abastecimento } from 'src/app/model/Abastecimeto.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator'; // Importe o MatPaginator
 
 import { AbastecimentoService } from 'src/app/services/abastecimento.service';
-
 
 @Component({
   selector: 'app-tables',
@@ -11,8 +11,9 @@ import { AbastecimentoService } from 'src/app/services/abastecimento.service';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'bomba', 'combustivel', 'quantidadeLitros', 'valorAbastecido'];
+  displayedColumns: string[] = ['id','quantidadeLitros','valorAbastecido','bomba','combustivel','data'];
   dataSource: MatTableDataSource<Abastecimento>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private abastecimentoService: AbastecimentoService,
@@ -22,6 +23,7 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.abastecimentoService.getAbastecimentos().subscribe(abastecimentos => {
       this.dataSource = new MatTableDataSource<Abastecimento>(abastecimentos);
+      this.dataSource.paginator = this.paginator;
     });
   }
 }
