@@ -106,7 +106,7 @@ export class AbastecimentoModalComponent {
         
         this.fecharModal();
         
-        this.mostrarMensagemDeSucesso('Abastecimento ok.');
+        this.mostrarMensagemDeSucesso('Abastecimento Autorizado.');
   
           this.novoAbastecimento = {};
         },

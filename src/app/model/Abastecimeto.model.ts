@@ -7,5 +7,6 @@
     valorImpostoPago: number;
     data: string;
     imposto: number;
+    selectedBomba: string;
   }
   

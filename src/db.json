@@ -159,6 +159,14 @@
       "quantidadeLitros": 75.26,
       "valorAbastecido": "432.00",
       "data": "2024-01-10"
+    },
+    {
+      "data": "2023-10-28",
+      "valorAbastecido": "R$ 392,00",
+      "quantidadeLitros": "68.29",
+      "bomba": "Bomba 2",
+      "combustivel": "Gasolina",
+      "id": 21
     }
   ]
 }

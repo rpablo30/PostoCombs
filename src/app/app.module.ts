@@ -6,7 +6,10 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-
+import { DatePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common'; // Importe o CommonModule
 
 
 import { AppComponent } from './app.component';
@@ -35,6 +38,9 @@ import { TablesComponent } from './pages/tables/tables.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    CommonModule    
   ],
   declarations: [
     AppComponent,
@@ -42,7 +48,7 @@ import { TablesComponent } from './pages/tables/tables.component';
     AuthLayoutComponent,
     TablesComponent
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
