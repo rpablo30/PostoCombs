@@ -4,6 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { AbastecimentoService } from 'src/app/services/abastecimento.service';
 import { Abastecimento } from 'src/app/model/Abastecimeto.model';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { RelatorioModalComponent } from 'src/app/modal/relatorioModal/relatorioModal.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-tables',
@@ -23,7 +26,8 @@ export class TablesComponent implements OnInit {
 
 
   constructor(
-    private abastecimentoService: AbastecimentoService
+    private abastecimentoService: AbastecimentoService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -60,22 +64,20 @@ export class TablesComponent implements OnInit {
 
   
   imprimirRelatorio() {
-    const relatorio = this.abastecimentos.reduce((agrupado, abastecimento) => {
-      const chave = `${abastecimento.data} - ${abastecimento.bomba} - ${abastecimento.combustivel}`;
-      if (!agrupado[chave]) {
-        agrupado[chave] = {
-          dia: new Date(abastecimento.data).toLocaleDateString('pt-BR'),
-          tanque: abastecimento.bomba,
-          bomba: abastecimento.bomba,
-          combustivel: abastecimento.combustivel,
-          valorAbastecido: abastecimento.valorAbastecido
-        };
-      }
-      return agrupado;
-    }, {});
+    // Substitua o código de impressão pelo código para abrir o modal
+    let tipoCombustivel = ''; // Determine o tipo de combustível com base nas seleções
   
-    const relatorioArray = Object.values(relatorio);
-    console.log(relatorioArray);
+    // Aqui você deve determinar o tipo de combustível com base na seleção
+    // e a lógica para pegar as seleções de dia, tanque e bomba.
+  
+    this.dialog.open(RelatorioModalComponent, {
+      width: '400px', // Defina a largura desejada para o modal
+      data: {
+        diaSelecionado: '', // Passe as seleções para o modal
+        tanqueSelecionado: '',
+        bombaSelecionada: ''
+      }
+    });
   }
   
 

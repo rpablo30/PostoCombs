@@ -10,6 +10,7 @@ import { AbastecimentoRegistroComponent } from '../../pages/abastecimento/abaste
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AbastecimentoModalComponent } from 'src/app/modal/abastecimentoModal/abastecimentoModal.component';
+import { RelatorioModalComponent } from 'src/app/modal/relatorioModal/relatorioModal.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { AbastecimentoModalComponent } from 'src/app/modal/abastecimentoModal/ab
   declarations: [
     AbastecimentoRegistroComponent,
     AbastecimentoModalComponent,
+    RelatorioModalComponent
   ]
 })
 

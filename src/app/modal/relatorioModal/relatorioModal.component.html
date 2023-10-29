@@ -1,0 +1,23 @@
+<div class="modal-container">
+  <div class="modal-dialog-fixed-size">
+    <h2>Imprimir Relatório</h2>
+    <form (ngSubmit)="gerarRelatorio()">
+      <div class="form-group">
+        <label for="dataAbastecimento">Data Inicial</label>
+        <input matInput type="date" [(ngModel)]="diaSelecionado" name="diaSelecionado" required>
+      </div>
+      <div class="form-group">
+        <label for="tanque">Tanque</label>
+        <input matInput type="text" [(ngModel)]="tanqueSelecionado" name="tanqueSelecionado" required class="custom-margin" [readonly]="true">
+      </div>
+      <div class="form-group">
+        <label for="bomba">Bomba</label>
+        <input matInput type="text" [(ngModel)]="bombaSelecionada" name="bombaSelecionada" required class="custom-margin" [readonly]="true">
+      </div>
+      <div class="form-group">
+        <button mat-button (click)="fecharModal()">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="confirmarSelecoes()">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
