@@ -70,37 +70,45 @@ export class RelatorioModalComponent {
   gerarRelatorioPDF() {
     const doc = new jsPDF();
     doc.setFontSize(8);
-
+  
     doc.text('Relatório de Abastecimento', 10, 10);
     doc.text(`Data Inicial: ${this.diaSelecionadoInicio}`, 10, 20);
     doc.text(`Data Final: ${this.diaSelecionadoFim}`, 10, 30);
     doc.text(`Tanque Selecionado: ${this.tanqueSelecionado}`, 10, 40);
     doc.text(`Bomba Selecionada: ${this.getSelectedBombas()}`, 10, 50);
-
+  
     let linha = 60;
-    this.abastecimentos.forEach(abastecimento => {
-      if (this.isBombaSelected(abastecimento.bomba)) {
-        // Converter a data de string para um objeto Date
-        const dataAbastecimento = new Date(abastecimento.data);
-        doc.text(`Data: ${this.formatDate(dataAbastecimento)}`, 10, linha); // Ajuste para o formato brasileiro
-        doc.text(`Combustível: ${abastecimento.combustivel}`, 50, linha);
-        doc.text(`Quantidade de Litros: ${abastecimento.quantidadeLitros}`, 100, linha);
-        doc.text(`Valor Abastecido: ${abastecimento.valorAbastecido}`, 150, linha);
-        linha += 10;
-      }
+    // Filtrar os abastecimentos com base nas datas
+    const abastecimentosFiltrados = this.abastecimentos.filter((abastecimento) => {
+      const dataAbastecimento = new Date(abastecimento.data);
+      const dataInicio = new Date(this.diaSelecionadoInicio);
+      const dataFim = new Date(this.diaSelecionadoFim);
+      return (
+        this.isBombaSelected(abastecimento.bomba) &&
+        dataAbastecimento >= dataInicio &&
+        dataAbastecimento <= dataFim
+      );
     });
-
+  
+    abastecimentosFiltrados.forEach((abastecimento) => {
+      const dataAbastecimento = new Date(abastecimento.data);
+      doc.text(`Data: ${this.formatDate(dataAbastecimento)}`, 10, linha);
+      doc.text(`Combustível: ${abastecimento.combustivel}`, 50, linha);
+      doc.text(`Quantidade de Litros: ${abastecimento.quantidadeLitros}`, 100, linha);
+      doc.text(`Valor Abastecido: ${abastecimento.valorAbastecido}`, 150, linha);
+      linha += 10;
+    });
+  
     doc.save('relatorio.pdf');
     this.showSuccessMessageAndCloseModal();
-}
-
+  }
+  
   formatDate(date: Date): string {
-    const day = date.getDate().toString().padStart(2, '0');
+    const day = (date.getDate() + 1).toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
-
 
   onTipoCombustivelChange() {
     if (this.tanqueSelecionado === 'Gasolina') {
