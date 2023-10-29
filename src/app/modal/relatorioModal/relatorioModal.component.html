@@ -4,16 +4,70 @@
     <form (ngSubmit)="gerarRelatorio()">
       <div class="form-group">
         <label for="dataAbastecimento">Data Inicial</label>
-        <input matInput type="date" [(ngModel)]="diaSelecionado" name="diaSelecionado" required>
+        <input matInput type="date" [(ngModel)]="diaSelecionadoInicio" name="diaISelecionado" required>
       </div>
       <div class="form-group">
-        <label for="tanque">Tanque</label>
-        <input matInput type="text" [(ngModel)]="tanqueSelecionado" name="tanqueSelecionado" required class="custom-margin" [readonly]="true">
+        <label for="dataAbastecimento">Data Final</label>
+        <input matInput type="date" [(ngModel)]="diaSelecionadoFim" name="diaFSelecionado" required>
       </div>
+
+      
       <div class="form-group">
-        <label for="bomba">Bomba</label>
-        <input matInput type="text" [(ngModel)]="bombaSelecionada" name="bombaSelecionada" required class="custom-margin" [readonly]="true">
+        <label for="tanque">Combustível</label>
+        <select matInput [(ngModel)]="tanqueSelecionado" name="tanqueSelecionado" (change)="onTipoCombustivelChange()" required>
+          <option value="" disabled selected>Selecione o tipo de combustível</option>
+          <option value="GasolinaDiesel">Gasolina/Diesel</option>
+          <option value="Gasolina">Gasolina</option>
+          <option value="Diesel">Diesel</option>
+        </select>
       </div>
+      
+      <div class="form-group">
+        <label for="tanque">Escolha as bombas</label>
+        <div *ngIf="tanqueSelecionado === 'GasolinaDiesel'">
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Gasolina1" name="bombaSelecionada.Gasolina1">
+            Gasolina 1
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Gasolina2" name="bombaSelecionada.Gasolina2">
+            Gasolina 2
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Diesel1" name="bombaSelecionada.Diesel1">
+            Diesel 1
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Diesel2" name="bombaSelecionada.Diesel2">
+            Diesel 2
+          </label>
+        </div>
+        <div *ngIf="tanqueSelecionado === 'Gasolina'">
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Gasolina1" name="bombaSelecionada.Gasolina1">
+            Gasolina 1
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Gasolina2" name="bombaSelecionada.Gasolina2">
+            Gasolina 2
+          </label>
+        </div>
+        <div *ngIf="tanqueSelecionado === 'Diesel'">
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Diesel1" name="bombaSelecionada.Diesel1">
+            Diesel 1
+          </label>
+          <label>
+            <input type="checkbox" [(ngModel)]="bombaSelecionada.Diesel2" name="bombaSelecionada.Diesel2">
+            Diesel 2
+          </label>
+        </div>
+      </div>
+      
+      
+
+      
+
       <div class="form-group">
         <button mat-button (click)="fecharModal()">Cancelar</button>
         <button mat-raised-button color="primary" (click)="confirmarSelecoes()">Confirmar</button>

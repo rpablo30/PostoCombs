@@ -10,6 +10,10 @@ export class RelatorioModalComponent {
   diaSelecionado: string = '';
   tanqueSelecionado: string = '';
   bombaSelecionada: string = '';
+  diaSelecionadoInicio: string = ''; 
+  diaSelecionadoFim: string = ''; 
+  tipoTanqueSelecionado: string = '';
+
 
   constructor(
     public dialogRef: MatDialogRef<RelatorioModalComponent>,
@@ -17,18 +21,30 @@ export class RelatorioModalComponent {
   ) {}
 
   gerarRelatorio() {
-    // Aqui você pode gerar o relatório com base nas seleções feitas
-    // Utilize this.diaSelecionado, this.tanqueSelecionado e this.bombaSelecionada
   }
 
   confirmarSelecoes() {
-    // Fecha o modal e envia as seleções de volta para a página anterior
     this.dialogRef.close({
       diaSelecionado: this.diaSelecionado,
       tanqueSelecionado: this.tanqueSelecionado,
       bombaSelecionada: this.bombaSelecionada
     });
   }
+
+  onTipoCombustivelChange() {
+   
+    if (this.tanqueSelecionado === 'Gasolina') {
+   
+      this.tipoTanqueSelecionado = 'GasolinaTanque';
+    } else if (this.tanqueSelecionado === 'Diesel') {
+      this.tipoTanqueSelecionado = 'DieselTanque';
+    } else if (this.tanqueSelecionado === 'GasolinaDiesel') {
+      this.tipoTanqueSelecionado = 'GasolinaDieselTanque';
+    } else {
+      this.tipoTanqueSelecionado = '';
+    }
+  }
+  
 
   fecharModal() {
     this.dialogRef.close();
