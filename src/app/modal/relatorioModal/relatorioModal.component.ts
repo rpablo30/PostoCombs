@@ -45,6 +45,9 @@ export class RelatorioModalComponent {
     }
   }
   
+  
+
+
 
   fecharModal() {
     this.dialogRef.close();

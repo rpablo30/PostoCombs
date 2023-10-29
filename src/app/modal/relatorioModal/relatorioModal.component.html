@@ -1,6 +1,6 @@
 <div class="modal-container">
   <div class="modal-dialog-fixed-size">
-    <h2>Imprimir Relatório</h2>
+    <h2>Selecionar Relatórios</h2>
     <form (ngSubmit)="gerarRelatorio()">
       <div class="form-group">
         <label for="dataAbastecimento">Data Inicial</label>
@@ -70,7 +70,7 @@
 
       <div class="form-group">
         <button mat-button (click)="fecharModal()">Cancelar</button>
-        <button mat-raised-button color="primary" (click)="confirmarSelecoes()">Confirmar</button>
+        <button mat-raised-button color="primary" (click)="confirmarSelecoes()">Imprimir Relatório</button>
       </div>
     </form>
   </div>
