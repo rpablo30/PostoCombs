@@ -65,11 +65,12 @@
         <div>
           <label>Formato do Relatório:</label>
           <select [(ngModel)]="formatoRelatorio">
-            <option value="excel">Gerar Excel (XLSX)</option>
+            <option value="default">Selecionar Formato de Impressão</option>
             <option value="pdf">Gerar PDF</option>
+            <option value="excel">Gerar Excel (XLSX)</option>
           </select>
         </div>
-        <button mat-raised-button color="primary" (click)="gerarRelatorio()">Imprimir Relatório</button>
+        <button mat-raised-button color="primary" (click)="gerarRelatorio()">Confirmar Impressão</button>
       </div>
     </form>
   </div>

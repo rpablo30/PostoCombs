@@ -54,7 +54,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 74.12,
       "valorAbastecido": "425.00",
-      "data": "2023-11-05"
+      "data": "2023-09-05"
     },
     {
       "id": 8,
@@ -62,7 +62,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 49.32,
       "valorAbastecido": "290.00",
-      "data": "2023-11-10"
+      "data": "2023-09-10"
     },
     {
       "id": 9,
@@ -70,7 +70,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 32.18,
       "valorAbastecido": "192.00",
-      "data": "2023-11-15"
+      "data": "2023-09-15"
     },
     {
       "id": 10,
@@ -78,7 +78,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 56.34,
       "valorAbastecido": "320.00",
-      "data": "2023-11-20"
+      "data": "2023-09-20"
     },
     {
       "id": 11,
@@ -86,7 +86,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 52.62,
       "valorAbastecido": "321.00",
-      "data": "2023-11-25"
+      "data": "2023-09-25"
     },
     {
       "id": 12,
@@ -94,7 +94,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 5805.05,
       "valorAbastecido": "33321.00",
-      "data": "2023-11-30"
+      "data": "2023-09-30"
     },
     {
       "id": 13,
@@ -102,7 +102,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 70.00,
       "valorAbastecido": "410.00",
-      "data": "2023-12-05"
+      "data": "2023-10-05"
     },
     {
       "id": 14,
@@ -110,7 +110,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 52.00,
       "valorAbastecido": "320.00",
-      "data": "2023-12-10"
+      "data": "2023-09-10"
     },
     {
       "id": 15,
@@ -118,7 +118,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 75.00,
       "valorAbastecido": "440.00",
-      "data": "2023-12-15"
+      "data": "2023-09-15"
     },
     {
       "id": 16,
@@ -126,7 +126,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 62.00,
       "valorAbastecido": "360.00",
-      "data": "2023-12-20"
+      "data": "2023-09-20"
     },
     {
       "id": 17,
@@ -134,7 +134,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 65.00,
       "valorAbastecido": "380.00",
-      "data": "2023-12-25"
+      "data": "2023-09-25"
     },
     {
       "id": 18,
@@ -142,7 +142,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 60.00,
       "valorAbastecido": "350.00",
-      "data": "2023-12-30"
+      "data": "2023-10-30"
     },
     {
       "id": 19,
@@ -150,7 +150,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 50.00,
       "valorAbastecido": "300.00",
-      "data": "2024-01-05"
+      "data": "2023-09-05"
     },
     {
       "id": 20,
@@ -158,7 +158,7 @@
       "combustivel": "Gasolina",
       "quantidadeLitros": 42.00,
       "valorAbastecido": "250.00",
-      "data": "2024-01-10"
+      "data": "2023-09-10"
     },
     {
       "id": 21,
@@ -174,7 +174,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 60.00,
       "valorAbastecido": "350.00",
-      "data": "2023-11-05"
+      "data": "2023-10-05"
     },
     {
       "id": 23,
@@ -182,7 +182,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 70.00,
       "valorAbastecido": "420.00",
-      "data": "2023-11-10"
+      "data": "2023-10-10"
     },
     {
       "id": 24,
@@ -190,7 +190,7 @@
       "combustivel": "Diesel",
       "quantidadeLitros": 80.00,
       "valorAbastecido": "490.00",
-      "data": "2023-11-15"
+      "data": "2023-10-15"
     }
   ]
 }

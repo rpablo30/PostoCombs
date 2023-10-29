@@ -35,6 +35,7 @@ export class RelatorioModalComponent {
     const today = new Date();
     this.maxDate = today.toISOString().split('T')[0];
     this.carregarAbastecimentos();
+    this.formatoRelatorio = 'default';
   }
 
   carregarAbastecimentos() {
@@ -72,17 +73,17 @@ export class RelatorioModalComponent {
     doc.setFontSize(8);
   
     doc.text('Relatório de Abastecimento', 10, 10);
-    doc.text(`Data Inicial: ${this.diaSelecionadoInicio}`, 10, 20);
-    doc.text(`Data Final: ${this.diaSelecionadoFim}`, 10, 30);
+    doc.text(`Data Inicial: ${this.formatDate(new Date(this.diaSelecionadoInicio))}`, 10, 20);
+    doc.text(`Data Final: ${this.formatDate(new Date(this.diaSelecionadoFim))}`, 10, 30);
     doc.text(`Tanque Selecionado: ${this.tanqueSelecionado}`, 10, 40);
     doc.text(`Bomba Selecionada: ${this.getSelectedBombas()}`, 10, 50);
   
     let linha = 60;
-    // Filtrar os abastecimentos com base nas datas
+    const dataInicio = new Date(this.diaSelecionadoInicio);
+    const dataFim = new Date(this.diaSelecionadoFim);
+  
     const abastecimentosFiltrados = this.abastecimentos.filter((abastecimento) => {
       const dataAbastecimento = new Date(abastecimento.data);
-      const dataInicio = new Date(this.diaSelecionadoInicio);
-      const dataFim = new Date(this.diaSelecionadoFim);
       return (
         this.isBombaSelected(abastecimento.bomba) &&
         dataAbastecimento >= dataInicio &&
@@ -103,6 +104,7 @@ export class RelatorioModalComponent {
     this.showSuccessMessageAndCloseModal();
   }
   
+  
   formatDate(date: Date): string {
     const day = (date.getDate() + 1).toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -111,6 +113,7 @@ export class RelatorioModalComponent {
   }
 
   onTipoCombustivelChange() {
+    console.log('Seleção de combustível alterada:', this.tanqueSelecionado);
     if (this.tanqueSelecionado === 'Gasolina') {
       this.tipoTanqueSelecionado = 'GasolinaTanque';
     } else if (this.tanqueSelecionado === 'Diesel') {
@@ -136,7 +139,7 @@ export class RelatorioModalComponent {
       Diesel1: false,
       Diesel2: false
     };
-    this.formatoRelatorio = 'excel';
+    this.formatoRelatorio = 'default';
   }
 
   private isBombaSelected(bomba: string) {
