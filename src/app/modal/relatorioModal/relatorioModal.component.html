@@ -63,14 +63,13 @@
       <div class="form-group">
         <button mat-button (click)="fecharModal()">Cancelar</button>
         <div>
-          <label>Formato do Relatório:</label>
           <select [(ngModel)]="formatoRelatorio">
-            <option value="default">Selecionar Formato de Impressão</option>
+            <option value="default">Selecionar Formato do Download</option>
             <option value="pdf">Gerar PDF</option>
             <option value="excel">Gerar Excel (XLSX)</option>
           </select>
         </div>
-        <button mat-raised-button color="primary" (click)="gerarRelatorio()">Confirmar Impressão</button>
+        <button mat-raised-button color="primary" (click)="gerarRelatorio()">Confirmar Download</button>
       </div>
     </form>
   </div>

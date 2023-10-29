@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 import { AppComponent } from './app.component';
@@ -46,7 +48,8 @@ import { TablesComponent } from './pages/tables/tables.component';
     CommonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule  
+    MatInputModule,
+    MatIconModule
   ],
   declarations: [
     AppComponent,
