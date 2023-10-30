@@ -71,38 +71,65 @@ export class RelatorioModalComponent {
   gerarRelatorioPDF() {
     const doc = new jsPDF();
     doc.setFontSize(8);
-  
+
     doc.text('Relatório de Abastecimento', 10, 10);
     doc.text(`Data Inicial: ${this.formatDate(new Date(this.diaSelecionadoInicio))}`, 10, 20);
     doc.text(`Data Final: ${this.formatDate(new Date(this.diaSelecionadoFim))}`, 10, 30);
     doc.text(`Tanque Selecionado: ${this.tanqueSelecionado}`, 10, 40);
     doc.text(`Bomba Selecionada: ${this.getSelectedBombas()}`, 10, 50);
-  
+
     let linha = 60;
     const dataInicio = new Date(this.diaSelecionadoInicio);
     const dataFim = new Date(this.diaSelecionadoFim);
-  
+
     const abastecimentosFiltrados = this.abastecimentos.filter((abastecimento) => {
-      const dataAbastecimento = new Date(abastecimento.data);
-      return (
-        this.isBombaSelected(abastecimento.bomba) &&
-        dataAbastecimento >= dataInicio &&
-        dataAbastecimento <= dataFim
-      );
+        const dataAbastecimento = new Date(abastecimento.data);
+        const timestampAbastecimento = dataAbastecimento.getTime();
+        return (
+            this.isBombaSelected(abastecimento.bomba) &&
+            timestampAbastecimento >= dataInicio.getTime() &&
+            timestampAbastecimento <= dataFim.getTime()
+        );
     });
-  
+
+    abastecimentosFiltrados.sort((a, b) => {
+        const dataA = new Date(a.data).getTime();
+        const dataB = new Date(b.data).getTime();
+        return dataA - dataB;
+    });
+
+    let totalValorAbastecido = 0;
+
     abastecimentosFiltrados.forEach((abastecimento) => {
-      const dataAbastecimento = new Date(abastecimento.data);
-      doc.text(`Data: ${this.formatDate(dataAbastecimento)}`, 10, linha);
-      doc.text(`Combustível: ${abastecimento.combustivel}`, 50, linha);
-      doc.text(`Quantidade de Litros: ${abastecimento.quantidadeLitros}`, 100, linha);
-      doc.text(`Valor Abastecido: ${abastecimento.valorAbastecido}`, 150, linha);
-      linha += 10;
+        const dataAbastecimento = new Date(abastecimento.data);
+        doc.text(`Data: ${this.formatDate(dataAbastecimento)}`, 10, linha);
+        doc.text(`Combustível: ${abastecimento.combustivel}`, 50, linha);
+        doc.text(`Quantidade de Litros: ${abastecimento.quantidadeLitros}`, 100, linha);
+        doc.text(`Valor Abastecido: R$ ${abastecimento.valorAbastecido}`, 150, linha);
+        linha += 10;
+
+        totalValorAbastecido += parseFloat(abastecimento.valorAbastecido.replace('R$', '').replace(',', '.').trim());
     });
-  
+
+    // Formatar a soma com vírgulas e duas casas decimais
+    const somaFormatada = totalValorAbastecido.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    // Linha horizontal
+    doc.setLineWidth(0.5);
+    doc.line(10, linha, 200, linha);
+
+    // Exibir a soma formatada
+    linha += 10;
+    doc.text(`Soma: R$ ${somaFormatada}`, 10, linha);
+
+    // Salvar o PDF
     doc.save('relatorio.pdf');
     this.showSuccessMessageAndCloseModal();
-  }
+}
+
   
   
   formatDate(date: Date): string {

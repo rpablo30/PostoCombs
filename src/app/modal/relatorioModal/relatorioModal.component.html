@@ -4,7 +4,7 @@
     <form>
       <div class="form-group">
         <label for="dataAbastecimento">Data Inicial</label>
-        <input matInput type="date" [(ngModel)]="diaSelecionadoInicio" name="diaISelecionado" required>
+        <input matInput type="date" [(ngModel)]="diaSelecionadoInicio" name="diaISelecionado" required [max]="maxDate">
       </div>
       <div class="form-group">
         <label for="dataAbastecimento">Data Final</label>
