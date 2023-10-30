@@ -42,6 +42,10 @@ export class RelatorioModalComponent {
     this.abastecimentoService.getAbastecimentos().subscribe(abastecimentos => {
       this.abastecimentos = abastecimentos;
     });
+      // Ajustando para a data inicial
+      const today = new Date();
+      this.diaSelecionadoInicio = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0];
+
   }
 
   gerarRelatorio() {
@@ -57,25 +61,76 @@ export class RelatorioModalComponent {
       this.gerarRelatorioPDF();
     }
   }
-
   gerarRelatorioExcel() {
-    const relatorioData = [
-    ];
+    const relatorioData = this.prepararDadosParaExcel(); // Popula a variável com os dados
+  
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(relatorioData);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Relatorio');
-    XLSX.writeFile(wb, 'relatorio.xlsx');
+  
+    // Use "binary" como o tipo de saída
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+  
+    const blob = new Blob([this.s2ab(excelBuffer)], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    });
+  
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'relatorio.xlsx';
+    a.click();
+  
     this.showSuccessMessageAndCloseModal();
   }
+  
 
+  s2ab(s: string): ArrayBuffer {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+  }
+
+
+prepararDadosParaExcel(): any[] {
+   
+    const dadosParaExcel = this.abastecimentos.map(abastecimento => {
+        return {
+            Data: this.formatDate(new Date(abastecimento.data)),
+            Combustível: abastecimento.combustivel,
+            'Quantidade de Litros': this.formatQuantidadeLitros(abastecimento.quantidadeLitros),
+            'Valor Abastecido': this.formatValorAbastecido(abastecimento.valorAbastecido)
+        };
+    });
+
+    return dadosParaExcel;
+}
+
+formatQuantidadeLitros(quantidade: number | string): string {
+    if (typeof quantidade === 'string') {
+        quantidade = parseFloat(quantidade);
+    }
+    return quantidade.toFixed(2).replace('.', ',');
+}
+
+formatValorAbastecido(valor: number | string): string {
+    if (typeof valor === 'string') {
+        valor = parseFloat(valor.replace('R$', '').replace(',', '.').trim());
+    }
+    return valor.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+  
   gerarRelatorioPDF() {
     const doc = new jsPDF();
     doc.setFontSize(8);
 
     doc.text('Relatório de Abastecimento', 10, 10);
-    doc.text(`Data Inicial: ${this.formatDate(new Date(this.diaSelecionadoInicio))}`, 10, 20);
-    doc.text(`Data Final: ${this.formatDate(new Date(this.diaSelecionadoFim))}`, 10, 30);
-    doc.text(`Tanque Selecionado: ${this.tanqueSelecionado}`, 10, 40);
+    doc.text(`Tanque Selecionado: ${this.tanqueSelecionado}`, 10, 30);
     doc.text(`Bomba Selecionada: ${this.getSelectedBombas()}`, 10, 50);
 
     let linha = 60;
@@ -104,31 +159,39 @@ export class RelatorioModalComponent {
         const dataAbastecimento = new Date(abastecimento.data);
         doc.text(`Data: ${this.formatDate(dataAbastecimento)}`, 10, linha);
         doc.text(`Combustível: ${abastecimento.combustivel}`, 50, linha);
-        doc.text(`Quantidade de Litros: ${abastecimento.quantidadeLitros}`, 100, linha);
-        doc.text(`Valor Abastecido: R$ ${abastecimento.valorAbastecido}`, 150, linha);
+
+        const quantidadeLitros = typeof abastecimento.quantidadeLitros === 'string' ? parseFloat(abastecimento.quantidadeLitros) : abastecimento.quantidadeLitros;
+        const quantidadeLitrosFormatada = quantidadeLitros.toFixed(2).replace('.', ',');
+        doc.text(`Quantidade de Litros: ${quantidadeLitrosFormatada}`, 100, linha);
+
+        const valorAbastecido = typeof abastecimento.valorAbastecido === 'string' ? parseFloat(abastecimento.valorAbastecido.replace('R$', '').replace(',', '.').trim()) : abastecimento.valorAbastecido;
+        const valorAbastecidoFormatado = valorAbastecido.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        doc.text(`Valor Abastecido: R$ ${valorAbastecidoFormatado}`, 150, linha);
+
         linha += 10;
 
-        totalValorAbastecido += parseFloat(abastecimento.valorAbastecido.replace('R$', '').replace(',', '.').trim());
+        totalValorAbastecido += valorAbastecido;
     });
 
-    // Formatar a soma com vírgulas e duas casas decimais
     const somaFormatada = totalValorAbastecido.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
 
-    // Linha horizontal
     doc.setLineWidth(0.5);
     doc.line(10, linha, 200, linha);
 
-    // Exibir a soma formatada
+    doc.setFontSize(20);
     linha += 10;
     doc.text(`Soma: R$ ${somaFormatada}`, 10, linha);
 
-    // Salvar o PDF
     doc.save('relatorio.pdf');
     this.showSuccessMessageAndCloseModal();
 }
+
 
   
   
