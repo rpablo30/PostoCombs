@@ -40,7 +40,7 @@ export class AbastecimentoModalComponent {
     const valorAbastecido = parseFloat(this.novoAbastecimento.valorAbastecido);
     
     if (!isNaN(valorAbastecido)) {
-      const taxaImposto = 0.13; // 13% de imposto
+      const taxaImposto = 0.13;
       const imposto = valorAbastecido * taxaImposto;
       
       this.novoAbastecimento.imposto = imposto;

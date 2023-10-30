@@ -42,19 +42,9 @@ export class RelatorioModalComponent {
     this.abastecimentoService.getAbastecimentos().subscribe(abastecimentos => {
       this.abastecimentos = abastecimentos;
     });
-      // Ajustando para a data inicial
-      const today = new Date();
-      this.diaSelecionadoInicio = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0];
-
   }
 
   gerarRelatorio() {
-    console.log('Formato do Relatório:', this.formatoRelatorio);
-    console.log('Data Inicial:', this.diaSelecionadoInicio);
-    console.log('Data Final:', this.diaSelecionadoFim);
-    console.log('Tanque Selecionado:', this.tanqueSelecionado);
-    console.log('Bomba Selecionada:', this.bombaSelecionada);
-
     if (this.formatoRelatorio === 'excel') {
       this.gerarRelatorioExcel();
     } else if (this.formatoRelatorio === 'pdf') {
@@ -62,13 +52,12 @@ export class RelatorioModalComponent {
     }
   }
   gerarRelatorioExcel() {
-    const relatorioData = this.prepararDadosParaExcel(); // Popula a variável com os dados
+    const relatorioData = this.prepararDadosParaExcel(); 
   
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(relatorioData);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Relatorio');
   
-    // Use "binary" como o tipo de saída
     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
   
     const blob = new Blob([this.s2ab(excelBuffer)], {
@@ -93,19 +82,49 @@ export class RelatorioModalComponent {
   }
 
 
-prepararDadosParaExcel(): any[] {
-   
-    const dadosParaExcel = this.abastecimentos.map(abastecimento => {
-        return {
-            Data: this.formatDate(new Date(abastecimento.data)),
-            Combustível: abastecimento.combustivel,
-            'Quantidade de Litros': this.formatQuantidadeLitros(abastecimento.quantidadeLitros),
-            'Valor Abastecido': this.formatValorAbastecido(abastecimento.valorAbastecido)
-        };
+  prepararDadosParaExcel(): any[] {
+    let totalValorAbastecido = 0;
+
+    const dataInicio = new Date(this.diaSelecionadoInicio);
+    const dataFim = new Date(this.diaSelecionadoFim);
+    
+    const dadosParaExcel = this.abastecimentos
+        .filter(abastecimento => {
+            const dataAbastecimento = new Date(abastecimento.data);
+            return dataAbastecimento >= dataInicio && dataAbastecimento <= dataFim;
+        })
+        .map(abastecimento => {
+            const valorAbastecido = typeof abastecimento.valorAbastecido === 'string'
+                ? parseFloat(abastecimento.valorAbastecido.replace('R$', '').replace(',', '.').trim())
+                : abastecimento.valorAbastecido;
+            
+            totalValorAbastecido += valorAbastecido; 
+
+            return {
+                Data: this.formatDate(new Date(abastecimento.data)),
+                Combustível: abastecimento.combustivel,
+                'Qtd Litros': this.formatQuantidadeLitros(abastecimento.quantidadeLitros),
+                'Valor': this.formatValorAbastecido(valorAbastecido)
+            };
+        });
+
+    dadosParaExcel.push({
+        Data: '',
+        Combustível: 'Total:',
+        'Qtd Litros': '',
+        'Valor': this.formatValorAbastecido(totalValorAbastecido)
+    });
+
+    dadosParaExcel.forEach(item => {
+        if (item['Qtd Litros'] !== '') {
+            item['Qtd Litros'] = `${item['Qtd Litros']} litros`;
+        }
     });
 
     return dadosParaExcel;
 }
+
+
 
 formatQuantidadeLitros(quantidade: number | string): string {
     if (typeof quantidade === 'string') {

@@ -18,7 +18,7 @@ export class TablesComponent implements OnInit {
   dataSource: MatTableDataSource<Abastecimento>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   abastecimentos: Abastecimento[]; 
-  abastecimentosOriginais: Abastecimento[]; // Uma cópia dos dados originais
+  abastecimentosOriginais: Abastecimento[];
   selectedBomba: string = 'all';
   selectedCombustivel: string = 'all';
   showBombaSelect: boolean = false;
@@ -32,15 +32,15 @@ export class TablesComponent implements OnInit {
 
   ngOnInit() {
     this.abastecimentoService.getAbastecimentos().subscribe(abastecimentos => {
-      this.abastecimentosOriginais = abastecimentos; // Manter uma cópia dos dados originais
-      this.abastecimentos = abastecimentos; // Inicialmente, ambos contêm os dados originais
+      this.abastecimentosOriginais = abastecimentos;
+      this.abastecimentos = abastecimentos; 
       this.dataSource = new MatTableDataSource<Abastecimento>(this.abastecimentos);
       this.dataSource.paginator = this.paginator;
     });
   }
 
   openDatePicker() {
-    this.picker.open(); // Abre o calendário quando o ícone é clicado
+    this.picker.open();
   }
 
   applyFilters() {
@@ -51,7 +51,6 @@ export class TablesComponent implements OnInit {
 
   filterData() {
     if (this.selectedBomba === 'all' && this.selectedCombustivel === 'all') {
-      // Redefinir para os dados originais se todos os filtros estiverem em "all"
       this.abastecimentos = this.abastecimentosOriginais.slice();
     } else {
       this.abastecimentos = this.abastecimentosOriginais.filter(abastecimento => {
@@ -64,22 +63,14 @@ export class TablesComponent implements OnInit {
 
   
   imprimirRelatorio() {
-    // Substitua o código de impressão pelo código para abrir o modal
-    let tipoCombustivel = ''; // Determine o tipo de combustível com base nas seleções
-  
-    // Aqui você deve determinar o tipo de combustível com base na seleção
-    // e a lógica para pegar as seleções de dia, tanque e bomba.
-  
+    let tipoCombustivel = ''; 
     this.dialog.open(RelatorioModalComponent, {
-      width: '400px', // Defina a largura desejada para o modal
+      width: '400px',
       data: {
-        diaSelecionado: '', // Passe as seleções para o modal
+        diaSelecionado: '',
         tanqueSelecionado: '',
         bombaSelecionada: ''
       }
     });
   }
-  
-
-
 }
