@@ -9,15 +9,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AbastecimentoService {
-  private apiUrl = 'http://localhost:3000'; 
+  private apiUrl = 'http://localhost:8080/api'; 
   constructor(private http: HttpClient) { }
 
   adicionarAbastecimentoNoServidor(abastecimento: Abastecimento): Observable<Abastecimento> {
-    return this.http.post<Abastecimento>(`${this.apiUrl}/abastecimentos`, abastecimento);
+    return this.http.post<Abastecimento>(`${this.apiUrl}/abastecimento`, abastecimento);
   }
 
   getAbastecimentos(): Observable<Abastecimento[]> {
-    return this.http.get<Abastecimento[]>(`${this.apiUrl}/abastecimentos`);
+    return this.http.get<Abastecimento[]>(`${this.apiUrl}/listarAbastecimento`);
   }
 
   
