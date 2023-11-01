@@ -11,6 +11,8 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AbastecimentoModalComponent } from 'src/app/modal/abastecimentoModal/abastecimentoModal.component';
 import { RelatorioModalComponent } from 'src/app/modal/relatorioModal/relatorioModal.component';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+
 
 @NgModule({
   imports: [
@@ -24,7 +26,8 @@ import { RelatorioModalComponent } from 'src/app/modal/relatorioModal/relatorioM
   declarations: [
     AbastecimentoRegistroComponent,
     AbastecimentoModalComponent,
-    RelatorioModalComponent
+    RelatorioModalComponent,
+    LoginComponent
   ]
 })
 
