@@ -9,7 +9,7 @@ export class AuthService{
   login(username: string, password: string): boolean {
     console.log('Tentando autenticar com:', username, password);
 
-    if (username === 'teste' && password === '123') {
+    if (username === 'devrodrigopablo' && password === '123') {
       this.usuarioAutenticado = true;
       console.log('Autenticado com sucesso.');
       return true;
