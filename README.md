@@ -30,9 +30,19 @@ Para iniciar o PostoCombs no seu ambiente local, siga estas instruções:
 5. Inicie o servidor de desenvolvimento: `ng serve`
 6. Acesse a aplicação em seu navegador: [http://localhost:4200](http://localhost:4200)
 
+**Login de amostra para acesso:**
+- Usuário: devrodrigopablo
+- Senha: 123
+
+**Instruções para o Login:**
+- No processo de login, você pode usar as seguintes credenciais de amostra:
+  - Usuário: devrodrigopablo
+  - Senha: 123
+- Utilize essas credenciais para acessar a aplicação.
+- Lembre-se de que essas são apenas credenciais de teste e devem ser alteradas em um ambiente de produção.
+
 ## Como Usar
 
 - Realize abastecimentos e gerencie os dados relacionados aos tanques e bombas de combustível.
 - A interface amigável torna o processo de registro e relatórios fácil de entender.
-- Conecta-se ao backend mencionado( https://github.com/rpablo30/ProjetoPostoCombustivel_Backend ).
-
+- Conecta-se ao backend mencionado (https://github.com/rpablo30/ProjetoPostoCombustivel_Backend).
