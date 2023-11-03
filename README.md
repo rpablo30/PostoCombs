@@ -5,7 +5,7 @@ Bem-vindo ao meu projeto do PostoCombs projeto de uma api de Posto de combustív
 ## Requisitos
 
 - Angular CLI: 14.2.13
-- Node: 20.9.0 (Não é suportado)
+- Node: 20.9.0
 - Package Manager: npm 10.1.0
 - 
 
